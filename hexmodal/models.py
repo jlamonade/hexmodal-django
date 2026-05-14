@@ -4,6 +4,7 @@ DEVICE_STATUS_CHOICES = [
     ("passing", "Passing"),
     ("failing", "Failing"),
 ]
+PASSING_DATA = "01"
 
 
 class Device(models.Model):
@@ -18,8 +19,6 @@ class Device(models.Model):
 
 
 class Payload(models.Model):
-    PASSING_DATA = "01"
-
     fCnt = models.IntegerField()
     devEUI = models.ForeignKey(Device, on_delete=models.CASCADE)
     data = models.CharField(max_length=512)
@@ -34,8 +33,8 @@ class Payload(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        new_status = "passing" if self.data == self.PASSING_DATA else "failing"
-        self.devEUI.status = new_status # safe since DRF catches invalid devEUI before save
+        new_status = "passing" if self.data == PASSING_DATA else "failing"
+        self.devEUI.status = new_status  # safe since DRF catches invalid devEUI before save
         self.devEUI.save()
 
     def __str__(self):
