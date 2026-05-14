@@ -1,4 +1,4 @@
-.PHONY: install migrate superuser run clean
+.PHONY: install migrate superuser run test clean
 
 VENV := venv
 PY := $(VENV)/bin/python
@@ -25,6 +25,9 @@ run: superuser
 	@echo "Admin login:   admin / admin"
 	@echo ""
 	@$(PY) manage.py runserver $(PORT)
+
+test: install
+	@$(PY) manage.py test hexmodal
 
 clean:
 	rm -f db.sqlite3
