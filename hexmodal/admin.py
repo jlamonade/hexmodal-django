@@ -5,14 +5,14 @@ from hexmodal.models import Device, Payload
 
 # Register your models here.
 class DeviceAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "status", "created_at")
-    search_fields = ("id", "name", "description")
+    list_display = ("devEUI", "name", "status", "created_at")
+    search_fields = ("devEUI", "name", "description")
     list_filter = ("status", "created_at")
 
 
 class PayloadAdmin(admin.ModelAdmin):
-    list_display = ("fCnt", "deviceEUI", "created_at")
-    search_fields = ("deviceEUI__name",)
+    list_display = ("fCnt", "devEUI", "created_at")
+    search_fields = ("devEUI__devEUI", "devEUI__name")
     list_filter = ("created_at",)
 
 
