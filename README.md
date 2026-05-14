@@ -61,8 +61,8 @@ The server starts at `http://localhost:8000/`.
 | `/admin/` | Django admin |
 | `/api/` | DRF browsable API root |
 | `/api/devices/` | Device list / create |
-| `/api/devices/<id>/` | Device detail / update / delete |
+| `/api/devices/<devEUI>/` | Device detail / update / delete |
 | `/api/payloads/` | Payload list / create |
-| `/api/payloads/<fCnt>/` | Payload detail / update / delete |
+| `/api/payloads/<id>/` | Payload detail / update / delete |
 
 Authentication is `BasicAuth` — log in with the superuser credentials when hitting the browsable API.
