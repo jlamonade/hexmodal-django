@@ -28,7 +28,7 @@ That's it. `make run` will:
 4. Create a default superuser (`admin` / `admin`) if one doesn't exist
 5. Start the dev server at `http://localhost:8989/`
 
-Subsequent `make run`s skip steps 1–4 (they're idempotent) and just boot the server.
+Subsequent `make run`'s skip steps 1–4 (they're idempotent) and just boot the server.
 
 ### Other targets
 
@@ -37,6 +37,7 @@ Subsequent `make run`s skip steps 1–4 (they're idempotent) and just boot the s
 | `make install` | Just create venv and install deps |
 | `make migrate` | Run migrations |
 | `make superuser` | Create the default `admin` / `admin` superuser |
+| `make test` | Run the test suite |
 | `make clean` | Wipe `db.sqlite3` and migrations (forces fresh schema next run) |
 
 ### Manual setup (no Make)
@@ -51,6 +52,20 @@ python manage.py migrate
 python manage.py createsuperuser   # interactive
 python manage.py runserver 8989
 ```
+
+## Tests
+
+```bash
+make test
+```
+
+Or manually:
+
+```bash
+python manage.py test hexmodal
+```
+
+Tests live in `hexmodal/tests.py` and cover model validation, base64 → hex serialization, and the Device status side-effect on Payload save.
 
 ## Endpoints
 
