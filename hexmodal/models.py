@@ -19,7 +19,7 @@ class Device(models.Model):
 
 class Payload(models.Model):
     fCnt = models.IntegerField(primary_key=True, unique=True, editable=False)  # message counter, unique and auto-incrementing
-    deviceEUI = models.CharField(foreign_key=Device, max_length=16)  # foreign key to Device model
+    deviceEUI = models.ForeignKey(Device, on_delete=models.CASCADE)  # foreign key to Device model
     data = models.TextField()  # raw payload data
     rxInfo = models.JSONField()  # JSON field to store rxInfo array
     txInfo = models.JSONField()  # JSON field to store txInfo object
