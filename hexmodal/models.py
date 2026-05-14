@@ -21,7 +21,7 @@ class Device(models.Model):
 class Payload(models.Model):
     fCnt = models.IntegerField(primary_key=True, unique=True, editable=False)  # message counter, unique and auto-incrementing
     deviceEUI = models.ForeignKey(Device, on_delete=models.CASCADE)  # foreign key to Device model
-    data = models.TextField()  # raw payload data
+    data = models.CharField(max_length=512)  # loRaWAN payload data as a hex string, max payload size is 242 bytes, 484 hex characters
     rxInfo = models.JSONField()  # JSON field to store rxInfo array
     txInfo = models.JSONField()  # JSON field to store txInfo object
     created_at = models.DateTimeField(auto_now_add=True)
