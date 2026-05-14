@@ -5,8 +5,8 @@ from hexmodal.models import Device, Payload
 
 # Register your models here.
 class DeviceAdmin(admin.ModelAdmin):
-    list_display = ("name", "status", "created_at")
-    search_fields = ("name", "description")
+    list_display = ("id", "name", "status", "created_at")
+    search_fields = ("id", "name", "description")
     list_filter = ("status", "created_at")
 
 
